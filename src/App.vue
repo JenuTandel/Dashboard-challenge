@@ -1,11 +1,26 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <the-header></the-header>
   </nav>
-  <router-view/>
+  <aside>
+    <the-sidebar></the-sidebar>
+  </aside>
+  <main>
+    <router-view></router-view>
+  </main>
 </template>
 
+<script lang="ts">
+import TheHeader from "./components/core/TheHeader.vue";
+import TheSidebar from "./components/core/TheSidebar.vue";
+
+export default {
+  components: {
+    TheHeader,
+    TheSidebar,
+  },
+};
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
