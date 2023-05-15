@@ -1,0 +1,23 @@
+#sidebar {
+    .logo-wrapper {
+        height: 26px;
+        width: 26px;
+        border-radius: 50%;
+        border: 2px solid $secondary;
+
+        span {
+            font-size: 12px;
+        }
+    }
+
+    .img-wrapper {
+        height: 24px;
+        width: 24px;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}

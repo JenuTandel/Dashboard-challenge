@@ -8,10 +8,17 @@ body,
 html {
     height: 100%;
     width: 100%;
+    font-family: $font-family-base;
 }
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.icon {
+    color: $secondary;
+    cursor: pointer;
+    font-size: 18px;
 }
 
 a {

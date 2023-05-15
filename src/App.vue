@@ -1,13 +1,17 @@
 <template>
-  <nav>
-    <the-header></the-header>
-  </nav>
-  <aside>
-    <the-sidebar></the-sidebar>
-  </aside>
-  <main>
-    <router-view></router-view>
-  </main>
+  <section class="h-100 w-100 d-flex">
+    <aside>
+      <the-sidebar></the-sidebar>
+    </aside>
+    <div class="d-flex flex-column flex-grow-1">
+      <nav>
+        <the-header></the-header>
+      </nav>
+      <main class="h-100">
+        <router-view></router-view>
+      </main>
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -23,11 +27,10 @@ export default {
 </script>
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  height: 100%;
+  width: 100%;
 }
 
 nav {
