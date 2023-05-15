@@ -4,9 +4,9 @@
       <the-sidebar></the-sidebar>
     </aside>
     <div class="d-flex flex-column flex-grow-1">
-      <nav>
+      <header>
         <the-header></the-header>
-      </nav>
+      </header>
       <main class="h-100">
         <router-view></router-view>
       </main>

@@ -24,3 +24,22 @@ html {
 a {
     text-decoration: none;
 }
+
+.header-height {
+    height: 55px;
+}
+
+.img-wrapper {
+    height: 24px;
+    width: 24px;
+    overflow: hidden;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.link-active {
+    border: 2px solid #aad15e;
+}

@@ -1,10 +1,12 @@
 <template>
   <div id="sidebar" class="bg-black h-100 d-flex flex-column">
     <div class="d-flex flex-column align-items-center flex-grow-1">
-      <div
-        class="logo-wrapper m-3 d-flex align-items-center justify-content-center"
-      >
-        <span class="text-secondary">PM</span>
+      <div class="header-height mx-3 d-flex align-items-center">
+        <div
+          class="logo-wrapper d-flex align-items-center justify-content-center"
+        >
+          <span class="text-secondary">PM</span>
+        </div>
       </div>
       <div
         class="d-flex flex-column w-100 border-top border-bottom border-secondary align-items-center"

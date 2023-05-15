@@ -1,18 +1,19 @@
 @font-face {
-  font-family: 'icon';
-  src:  url('fonts/icon.eot?348mnd');
-  src:  url('fonts/icon.eot?348mnd#iefix') format('embedded-opentype'),
-    url('fonts/icon.ttf?348mnd') format('truetype'),
-    url('fonts/icon.woff?348mnd') format('woff'),
-    url('fonts/icon.svg?348mnd#icon') format('svg');
+  font-family: "icon";
+  src: url("fonts/icon.eot?348mnd");
+  src: url("fonts/icon.eot?348mnd#iefix") format("embedded-opentype"),
+    url("fonts/icon.ttf?348mnd") format("truetype"),
+    url("fonts/icon.woff?348mnd") format("woff"),
+    url("fonts/icon.svg?348mnd#icon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icon' !important;
+  font-family: "icon" !important;
   speak: never;
   font-style: normal;
   font-weight: normal;

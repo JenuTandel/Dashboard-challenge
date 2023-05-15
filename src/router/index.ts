@@ -5,6 +5,10 @@ import GraphView from "../views/GraphView.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
+    redirect: "home",
+  },
+  {
+    path: "/graph",
     name: "graph",
     component: GraphView,
   },
@@ -18,6 +22,7 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  linkActiveClass: "link-active",
 });
 
 export default router;

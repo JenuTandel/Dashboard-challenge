@@ -1,0 +1,20 @@
+.name-logo-wrapper {
+    background-color: #437b98;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    margin-left: -7px;
+    margin-top: 2px;
+
+    span {
+        font-size: 12px;
+    }
+}
+
+.icon-bar {
+    transform: rotate(-90deg);
+}
+
+.nav-link:hover {
+    border: 2px solid #aad15e;
+}
