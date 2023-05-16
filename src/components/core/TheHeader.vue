@@ -1,8 +1,6 @@
 <template>
   <div class="header-height">
-    <div
-      class="row gx-0 h-100 align-items-center bg-primary border-bottom border-secondary"
-    >
+    <div class="row gx-0 h-100 align-items-center bg-primary border-bottom">
       <!-- start: profile -->
       <div class="col-4 d-flex px-3">
         <h4 class="text-secondary fw-light">Govalle Construction</h4>

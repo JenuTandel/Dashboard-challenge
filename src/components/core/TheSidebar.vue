@@ -9,7 +9,7 @@
         </div>
       </div>
       <div
-        class="d-flex flex-column w-100 border-top border-bottom border-secondary align-items-center"
+        class="d-flex flex-column w-100 border-top border-bottom align-items-center"
       >
         <span class="m-3 icon icon-home"></span>
         <span class="m-3 icon icon-schedule"></span>

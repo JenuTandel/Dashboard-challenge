@@ -1,10 +1,24 @@
 <template>
-  <health-data></health-data>
-  <tasks-graph></tasks-graph>
-  <progress-graph></progress-graph>
-  <time-graph></time-graph>
-  <cost-graph></cost-graph>
-  <workload-graph></workload-graph>
+  <div class="row h-100 gx-0 bg-primary">
+    <div class="col-4 p-4 h-50 border-bottom border-end">
+      <health-data></health-data>
+    </div>
+    <div class="col-4 p-4 h-50 border-bottom border-end">
+      <tasks-graph></tasks-graph>
+    </div>
+    <div class="col-4 p-4 h-50 border-bottom border-end">
+      <progress-graph></progress-graph>
+    </div>
+    <div class="col-4 p-4 h-50 border-bottom border-end">
+      <time-graph></time-graph>
+    </div>
+    <div class="col-4 p-4 h-50 border-bottom border-end">
+      <cost-graph></cost-graph>
+    </div>
+    <div class="col-4 p-4 h-50 border-bottom border-end">
+      <workload-graph></workload-graph>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -26,3 +40,5 @@ export default {
   },
 };
 </script>
+
+<style scoped></style>
