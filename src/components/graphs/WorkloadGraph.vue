@@ -22,40 +22,88 @@ export default {
       datasets: [
         {
           label: "Completed",
-          data: [4, 4, 3, 1, 4],
-          backgroundColor: ["#84bb5d", "#54d2f9", "#4198e0"],
-          barThickness: 30,
+          data: [4, 2, 0, 0, 0],
+          backgroundColor: ["#84bb5d"],
+          barThickness: 18,
+          borderWidth: 1,
+        },
+        {
+          label: "Remaining",
+          data: [0, 2, 1, 3, 1],
+          backgroundColor: ["#54d2f9"],
+          barThickness: 18,
+          borderWidth: 1,
+        },
+        {
+          label: "Overdue",
+          data: [],
+          backgroundColor: ["#f0504c"],
+          barThickness: 18,
           borderWidth: 1,
         },
       ],
-    };
-    const doughnutOptions = {
-      maintainAspectRatio: false,
-      indexAxis: "y",
-
-      elements: {
-        bar: {
-          pointStyle: "circle",
-        },
-      },
-      plugins: {
-        legend: {
-          labels: {
-            usePointStyle: true,
-            color: "#9da4ad",
-            font: {
-              size: 14,
-            },
-          },
-        },
-      },
     };
     const graphElement = ref();
     onMounted(() => {
       new Chart(graphElement.value, {
         type: "bar",
         data: data,
-        options: doughnutOptions,
+        options: {
+          maintainAspectRatio: false,
+          indexAxis: "y",
+          scales: {
+            x: {
+              max: 8,
+              min: 0,
+              stacked: true,
+              ticks: {
+                stepSize: 2,
+                color: "white",
+                font: {
+                  size: 14,
+                },
+              },
+              grid: {
+                color: "#9da4ad",
+                lineWidth: 0.2,
+              },
+              border: {
+                display: false,
+              },
+            },
+            y: {
+              stacked: true,
+              grid: {
+                display: false,
+              },
+              border: {
+                display: false,
+              },
+              ticks: {
+                color: "white",
+                crossAlign: "far",
+                font: {
+                  size: 14,
+                },
+              },
+              afterFit: function (scale) {
+                scale.width = 100;
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              align: "start",
+              labels: {
+                usePointStyle: true,
+                color: "#9da4ad",
+                font: {
+                  size: 14,
+                },
+              },
+            },
+          },
+        },
       });
     });
 
@@ -68,7 +116,7 @@ export default {
 
 <style scoped>
 .bar-chart {
-  height: 250px;
+  height: 280px;
   width: 100%;
 }
 </style>

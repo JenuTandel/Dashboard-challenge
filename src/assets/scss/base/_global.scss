@@ -8,6 +8,7 @@ body,
 html {
     height: 100%;
     width: 100%;
+    overflow: hidden;
     font-family: $font-family-base;
 }
 
@@ -42,4 +43,9 @@ a {
 
 .link-active {
     border: 2px solid #aad15e;
+}
+
+ul,
+li {
+    list-style-type: none;
 }

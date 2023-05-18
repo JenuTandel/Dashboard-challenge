@@ -16,6 +16,11 @@
       </div>
       <span class="m-3 icon icon-users"></span>
       <span class="m-3 icon icon-work"></span>
+      <div class="nav d-sm-block d-md-none border-top">
+        <ul>
+          <navbar-data></navbar-data>
+        </ul>
+      </div>
     </div>
     <div class="d-flex flex-column align-items-center">
       <span class="icon m-3 icon-plus"></span>
@@ -27,4 +32,16 @@
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<script lang="ts">
+import NavbarData from "../NavbarData.vue";
+export default {
+  components: { NavbarData },
+};
+</script>
+<style scoped lang="scss">
+@media (max-width: 768px) {
+  .nav {
+    display: block;
+  }
+}
+</style>

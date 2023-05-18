@@ -28,7 +28,6 @@ export default {
       ],
       datasets: [
         {
-          label: "",
           data: [100, 80, 19, 0.5, 0.5, 0.5],
           backgroundColor: [
             "#84bb5d",
@@ -42,33 +41,22 @@ export default {
         },
       ],
     };
-    const barOptions = {
-      maintainAspectRatio: false,
-      indexAxis: "y",
-      scales: {
-        y: {
-          grid: {
-            display: false,
-          },
-          border: {
-            display: false,
-          },
-        },
-        x: {
-          grid: {
-            display: false,
-          },
-          border: {
-            display: false,
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          labels: {
-            boxWidth: 0,
-          },
-        },
+
+    const plugin = {
+      id: "label",
+      afterDatasetsDraw: (chart: any, args: any, options: any) => {
+        const { ctx, data } = chart;
+        ctx.save();
+        data.datasets[0].data.forEach((element: any, index: any) => {
+          const { x, y } = chart
+            .getDatasetMeta(0)
+            .data[index].tooltipPosition();
+          (ctx.fillStyle = data.datasets[0].backgroundColor[index]),
+            (ctx.font = "normal 14px sans-serif");
+          ctx.align = "right";
+          ctx.textBaseline = "middle";
+          ctx.fillText(element + "%", 100, y);
+        });
       },
     };
     const graphElement = ref();
@@ -76,7 +64,39 @@ export default {
       new Chart(graphElement.value, {
         type: "bar",
         data: data,
-        options: barOptions,
+        options: {
+          maintainAspectRatio: false,
+          indexAxis: "y",
+          scales: {
+            y: {
+              grid: {
+                display: false,
+              },
+              border: {
+                display: false,
+              },
+              ticks: {
+                crossAlign: "far",
+                font: {
+                  size: 14,
+                },
+                color: "white",
+              },
+              afterFit: function (scale) {
+                scale.width = 150;
+              },
+            },
+            x: {
+              display: false,
+            },
+          },
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+        },
+        plugins: [plugin],
       });
     });
 

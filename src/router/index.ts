@@ -17,6 +17,36 @@ const routes: Array<RouteRecordRaw> = [
     name: "home",
     component: HomeView,
   },
+  {
+    path: "/list",
+    name: "list",
+    component: HomeView,
+  },
+  {
+    path: "/bar",
+    name: "bar",
+    component: HomeView,
+  },
+  {
+    path: "/segment",
+    name: "segment",
+    component: HomeView,
+  },
+  {
+    path: "/table",
+    name: "table",
+    component: HomeView,
+  },
+  {
+    path: "/calendar",
+    name: "calendar",
+    component: HomeView,
+  },
+  {
+    path: "/file",
+    name: "file",
+    component: HomeView,
+  },
 ];
 
 const router = createRouter({

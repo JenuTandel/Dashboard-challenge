@@ -1,21 +1,21 @@
 <template>
-  <div class="row h-100 gx-0 bg-primary">
-    <div class="col-4 p-4 h-50 border-bottom border-end">
+  <div class="row h-100 overflow-auto bg-primary gx-0">
+    <div class="col-xl-4 col-md-6 col-sm-12 p-4 h-50 border-bottom border-end">
       <health-data></health-data>
     </div>
-    <div class="col-4 p-4 h-50 border-bottom border-end">
+    <div class="col-xl-4 col-md-6 col-sm-12 p-4 h-50 border-bottom border-end">
       <tasks-graph></tasks-graph>
     </div>
-    <div class="col-4 p-4 h-50 border-bottom border-end">
+    <div class="col-xl-4 col-md-6 col-sm-12 p-4 h-50 border-bottom border-end">
       <progress-graph></progress-graph>
     </div>
-    <div class="col-4 p-4 h-50 border-bottom border-end">
+    <div class="col-xl-4 col-md-6 col-sm-12 p-4 h-50 border-bottom border-end">
       <time-graph></time-graph>
     </div>
-    <div class="col-4 p-4 h-50 border-bottom border-end">
+    <div class="col-xl-4 col-md-6 col-sm-12 p-4 h-50 border-bottom border-end">
       <cost-graph></cost-graph>
     </div>
-    <div class="col-4 p-4 h-50 border-bottom border-end">
+    <div class="col-xl-4 col-md-6 col-sm-12 p-4 h-50 border-bottom border-end">
       <workload-graph></workload-graph>
     </div>
   </div>
