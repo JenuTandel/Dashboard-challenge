@@ -1,5 +1,5 @@
 <template>
-  <div class="row h-100 overflow-auto bg-primary gx-0">
+  <div class="row h-100 overflow-auto gx-0">
     <div class="col-xl-4 col-md-6 col-sm-12 p-4 h-50 border-bottom border-end">
       <health-data></health-data>
     </div>

@@ -1,16 +1,16 @@
 <template>
-  <div id="sidebar" class="bg-black h-100 d-flex flex-column">
+  <div id="sidebar" class="background-secondary h-100 d-flex flex-column">
     <div class="d-flex flex-column align-items-center flex-grow-1">
-      <div class="header-height mx-3 d-flex align-items-center">
+      <div
+        class="header-height w-100 border-bottom d-flex align-items-center justify-content-center"
+      >
         <div
           class="logo-wrapper d-flex align-items-center justify-content-center"
         >
-          <span class="text-secondary">PM</span>
+          <span class="secondary-color">PM</span>
         </div>
       </div>
-      <div
-        class="d-flex flex-column w-100 border-top border-bottom align-items-center"
-      >
+      <div class="d-flex flex-column w-100 border-bottom align-items-center">
         <span class="m-3 icon icon-home"></span>
         <span class="m-3 icon icon-schedule"></span>
       </div>

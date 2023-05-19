@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-between align-items-center mb-2">
-    <h4 class="fw-light text-white">Workload</h4>
+    <h4 class="fw-light primary-color">Workload</h4>
     <div>
       <span class="icon icon-zoom fs-4 me-1"></span>
       <span class="icon icon-settings fs-4 me-1"></span>
@@ -14,9 +14,30 @@
 
 <script lang="ts">
 import Chart from "chart.js/auto";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, inject, watch, computed } from "vue";
 export default {
   setup() {
+    let chartInstance: any;
+    const graphElement = ref();
+
+    //dynamic ticks color
+    const ticksColor = inject<any>("ticksColor");
+    const newTicksColor = ref();
+    const ticksColorValue = computed(() => {
+      return ticksColor.value;
+    });
+    watch(
+      ticksColorValue,
+      () => {
+        newTicksColor.value = ticksColorValue.value;
+        if (chartInstance) {
+          chartInstance.destroy();
+        }
+        createChart();
+      },
+      { immediate: true }
+    );
+
     const data = {
       labels: ["Mike", "Jennifer", "Brandon", "Sam", "George"],
       datasets: [
@@ -43,9 +64,11 @@ export default {
         },
       ],
     };
-    const graphElement = ref();
     onMounted(() => {
-      new Chart(graphElement.value, {
+      createChart();
+    });
+    function createChart() {
+      chartInstance = new Chart(graphElement.value, {
         type: "bar",
         data: data,
         options: {
@@ -58,13 +81,13 @@ export default {
               stacked: true,
               ticks: {
                 stepSize: 2,
-                color: "white",
+                color: ticksColorValue.value,
                 font: {
                   size: 14,
                 },
               },
               grid: {
-                color: "#9da4ad",
+                color: ticksColorValue.value,
                 lineWidth: 0.2,
               },
               border: {
@@ -80,7 +103,7 @@ export default {
                 display: false,
               },
               ticks: {
-                color: "white",
+                color: ticksColorValue.value,
                 crossAlign: "far",
                 font: {
                   size: 14,
@@ -96,7 +119,7 @@ export default {
               align: "start",
               labels: {
                 usePointStyle: true,
-                color: "#9da4ad",
+                color: ticksColorValue.value,
                 font: {
                   size: 14,
                 },
@@ -105,8 +128,7 @@ export default {
           },
         },
       });
-    });
-
+    }
     return {
       graphElement,
     };

@@ -1,3 +1,37 @@
+:root.light {
+    --primary: #ffffff;
+    --secondary: #1f1f1f;
+    --text-color: #000000;
+    --border-color: #000000;
+    --bg-secondary: #bdbdbd;
+    --icon-color: var(--secondary);
+}
+
+:root.dark {
+    --primary: #101321;
+    --secondary: #9da4ad;
+    --text-color: #ffffff;
+    --border-color: #323543;
+    --bg-secondary: #000;
+    --icon-color: var(--secondary);
+}
+
+.background-primary {
+    background-color: var(--primary);
+}
+
+.background-secondary {
+    background-color: var(--bg-secondary);
+}
+
+.primary-color {
+    color: var(--text-color)
+}
+
+.secondary-color {
+    color: var(--secondary)
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -10,7 +44,6 @@ html {
     width: 100%;
     overflow: hidden;
     font-family: $font-family-base;
-    color: color-yiq(#ffffff);
 }
 
 .cursor-pointer {
@@ -18,7 +51,7 @@ html {
 }
 
 .icon {
-    color: $secondary;
+    color: var(--icon-color);
     cursor: pointer;
     font-size: 18px;
 }
@@ -54,4 +87,25 @@ li {
 .chart {
     height: 300px;
     width: 100%;
+}
+
+.theme-options {
+    max-width: 600px;
+    margin: 0 auto;
+
+    div {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        display: inline-block;
+    }
+}
+
+#theme-light {
+    background-color: #ffffff;
+}
+
+#theme-dark {
+    background-color: #101321;
 }

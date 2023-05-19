@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-between align-items-center mb-2">
-    <h4 class="fw-light text-white">Cost</h4>
+    <h4 class="fw-light primary-color">Cost</h4>
     <div>
       <span class="icon icon-zoom fs-4 me-1"></span>
       <span class="icon icon-settings fs-4 me-1"></span>
@@ -14,9 +14,29 @@
 
 <script lang="ts">
 import Chart from "chart.js/auto";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, inject, computed, watch } from "vue";
 export default {
   setup() {
+    let chartInstance: any;
+    const graphElement = ref();
+
+    //dynamic ticks color
+    const ticksColor = inject<any>("ticksColor");
+    const newTicksColor = ref();
+    const ticksColorValue = computed(() => {
+      return ticksColor.value;
+    });
+    watch(
+      ticksColorValue,
+      () => {
+        newTicksColor.value = ticksColorValue.value;
+        if (chartInstance) {
+          chartInstance.destroy();
+        }
+        createChart();
+      },
+      { immediate: true }
+    );
     const data = {
       labels: [""],
       datasets: [
@@ -54,7 +74,7 @@ export default {
     };
     const legendMargin = {
       id: "legend_margin",
-      beforeInit(chart: any, legend: any, options: any) {
+      beforeInit(chart: any) {
         const fitValue = chart.legend.fit;
         chart.legend.fit = function fit() {
           fitValue.bind(chart.legend)();
@@ -62,9 +82,12 @@ export default {
         };
       },
     };
-    const graphElement = ref();
     onMounted(() => {
-      new Chart(graphElement.value, {
+      createChart();
+    });
+
+    function createChart() {
+      chartInstance = new Chart(graphElement.value, {
         type: "bar",
         data: data,
         options: {
@@ -78,7 +101,7 @@ export default {
                 font: {
                   size: 14,
                 },
-                color: "white",
+                color: ticksColorValue.value,
                 callback: function (value: any, index: any) {
                   if (index == 0) {
                     return "$" + value;
@@ -89,7 +112,7 @@ export default {
               },
               grid: {
                 display: true,
-                color: "#9da4ad",
+                color: ticksColorValue.value,
                 lineWidth: 0.2,
               },
               border: {
@@ -107,7 +130,7 @@ export default {
               align: "start",
               labels: {
                 usePointStyle: true,
-                color: "#9da4ad",
+                color: ticksColorValue.value,
                 font: {
                   size: 14,
                 },
@@ -117,7 +140,7 @@ export default {
         },
         plugins: [legendMargin],
       });
-    });
+    }
 
     return {
       graphElement,

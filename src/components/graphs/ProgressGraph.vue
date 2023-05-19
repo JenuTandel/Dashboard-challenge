@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-between align-items-center mb-2">
-    <h4 class="fw-light text-white">Progress</h4>
+    <h4 class="fw-light primary-color">Progress</h4>
     <div>
       <span class="icon icon-zoom fs-4 me-1"></span>
       <span class="icon icon-settings fs-4 me-1"></span>
@@ -14,9 +14,30 @@
 
 <script lang="ts">
 import Chart from "chart.js/auto";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, inject, watch, computed } from "vue";
 export default {
   setup() {
+    let chartInstance: any;
+    const graphElement = ref();
+
+    // dynamic ticks-color
+    const ticksColor = inject<any>("ticksColor");
+    const newTicksColor = ref();
+    const ticksColorValue = computed(() => {
+      return ticksColor.value;
+    });
+    watch(
+      ticksColorValue,
+      () => {
+        newTicksColor.value = ticksColorValue.value;
+        if (chartInstance) {
+          chartInstance.destroy();
+        }
+        createChart();
+      },
+      { immediate: true }
+    );
+
     const data = {
       labels: [
         "Contracts",
@@ -44,13 +65,11 @@ export default {
 
     const plugin = {
       id: "label",
-      afterDatasetsDraw: (chart: any, args: any, options: any) => {
+      afterDatasetsDraw: (chart: any) => {
         const { ctx, data } = chart;
         ctx.save();
         data.datasets[0].data.forEach((element: any, index: any) => {
-          const { x, y } = chart
-            .getDatasetMeta(0)
-            .data[index].tooltipPosition();
+          const { y } = chart.getDatasetMeta(0).data[index].tooltipPosition();
           (ctx.fillStyle = data.datasets[0].backgroundColor[index]),
             (ctx.font = "normal 14px sans-serif");
           ctx.align = "right";
@@ -62,9 +81,11 @@ export default {
         });
       },
     };
-    const graphElement = ref();
     onMounted(() => {
-      new Chart(graphElement.value, {
+      createChart();
+    });
+    function createChart() {
+      chartInstance = new Chart(graphElement.value, {
         type: "bar",
         data: data,
         options: {
@@ -83,7 +104,7 @@ export default {
                 font: {
                   size: 14,
                 },
-                color: "white",
+                color: ticksColorValue.value,
               },
               afterFit: function (scale) {
                 scale.width = 150;
@@ -101,7 +122,7 @@ export default {
         },
         plugins: [plugin],
       });
-    });
+    }
 
     return {
       graphElement,
