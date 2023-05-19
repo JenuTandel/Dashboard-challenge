@@ -23,7 +23,9 @@
         </ul>
       </div>
       <!-- end: icons list -->
-      <div class="col-xl-4 d-none d-xl-block"></div>
+      <div class="col-xl-4 d-none d-xl-block">
+        <div></div>
+      </div>
     </div>
   </div>
 </template>
@@ -35,10 +37,4 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-// @media (max-width: 768px) {
-//   .nav {
-//     display: none;
-//   }
-// }
-</style>
+<style scoped lang="scss"></style>

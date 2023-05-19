@@ -7,7 +7,7 @@
       <span class="icon icon-help-circle fs-4"></span>
     </div>
   </div>
-  <div class="doughnut-chart">
+  <div class="chart">
     <canvas ref="graphElement"></canvas>
   </div>
 </template>
@@ -78,22 +78,25 @@ export default {
     const graphElement = ref();
     let chartInstance: any;
 
-    const updateChart = () => {
-      if (chartInstance) {
-        chartInstance.destroy();
-      }
-      createChart();
-    };
+    // const updateChart = () => {
+    //   if (chartInstance) {
+    //     chartInstance.destroy();
+    //   }
+    //   createChart();
+    //   const windowSize = window.matchMedia("(max-width:576px)");
+    //   if (windowSize.matches) {
+    //     window.location.reload();
+    //   }
+    // };
     onMounted(() => {
       createChart();
-      window.addEventListener("resize", updateChart);
+      window.addEventListener("resize", () => {
+        if (window.innerWidth < 576) {
+          window.location.reload();
+        }
+      });
     });
-    onUnmounted(() => {
-      window.removeEventListener("resize", updateChart);
-      if (chartInstance) {
-        chartInstance.destroy();
-      }
-    });
+
     const createChart = () => {
       chartInstance = new Chart(graphElement.value, {
         type: "doughnut",
@@ -109,10 +112,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.doughnut-chart {
-  height: 280px;
-  width: 100%;
-}
-</style>

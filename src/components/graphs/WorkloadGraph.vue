@@ -7,7 +7,7 @@
       <span class="icon icon-help-circle fs-4"></span>
     </div>
   </div>
-  <div class="bar-chart">
+  <div class="chart">
     <canvas ref="graphElement"></canvas>
   </div>
 </template>
@@ -113,10 +113,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.bar-chart {
-  height: 280px;
-  width: 100%;
-}
-</style>

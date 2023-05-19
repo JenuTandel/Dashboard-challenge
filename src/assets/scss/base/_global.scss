@@ -10,6 +10,7 @@ html {
     width: 100%;
     overflow: hidden;
     font-family: $font-family-base;
+    color: color-yiq(#ffffff);
 }
 
 .cursor-pointer {
@@ -48,4 +49,9 @@ a {
 ul,
 li {
     list-style-type: none;
+}
+
+.chart {
+    height: 300px;
+    width: 100%;
 }

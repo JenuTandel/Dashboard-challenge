@@ -7,7 +7,7 @@
       <span class="icon icon-help-circle fs-4"></span>
     </div>
   </div>
-  <div class="bar-chart">
+  <div class="chart">
     <canvas ref="graphElement"></canvas>
   </div>
 </template>
@@ -55,6 +55,9 @@ export default {
             (ctx.font = "normal 14px sans-serif");
           ctx.align = "right";
           ctx.textBaseline = "middle";
+          if (element < 1) {
+            element = 0;
+          }
           ctx.fillText(element + "%", 100, y);
         });
       },
@@ -106,10 +109,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.bar-chart {
-  height: 80%;
-  width: 100%;
-}
-</style>
